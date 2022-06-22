@@ -1,10 +1,10 @@
 import * as React from "react"
 import "./Sidebar.css"
 
-export default function Sidebar({shoppingCart}) {
+export default function Sidebar({shoppingCart, isOpen}) {
 
   return (
-    <section className="sidebar">
+    <section className={isOpen? "sidebar" : "sidebar closed"} >
       <p>Sidebar</p>
       <div>
       <p>item.name - item.quantity - item.unit_price . item.unit_price*item.quantity</p>

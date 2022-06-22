@@ -26,6 +26,7 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -63,7 +64,7 @@ export default function App() {
             <Route path="products/:productId" element={<ProductDetail />} />
             <Route path="*" element={<NotFound/>} />
           </Routes>
-          <Sidebar shoppingCart={shoppingCart}/>
+          <Sidebar shoppingCart={shoppingCart} isOpen={isOpen}/>
         </main>
       </BrowserRouter>
     </div>
