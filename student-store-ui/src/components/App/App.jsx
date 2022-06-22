@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Routes, Route, Link, useParams} from 'react-router-dom'
-import { useState , useEffect} from "react"
+import { Routes, Route, Link, useParams } from 'react-router-dom'
+import { useState, useEffect } from "react"
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
@@ -14,10 +14,11 @@ import NotFound from "../Home/NotFound"
 
 const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
-  {itemId : 0, name: 'Rice Krispies', quantity: 2, unit_price: 0.54},
-  {itemId : 1, name: 'Cheetos', quantity: 3, unit_price: 1.20},
-  {itemId : 2, name: 'Cookies', quantity: 5, unit_price: 0.01},
+  { itemId: 0, name: 'Rice Krispies', quantity: 2, unit_price: 0.54 },
+  { itemId: 1, name: 'Cheetos', quantity: 3, unit_price: 1.20 },
+  { itemId: 2, name: 'Cookies', quantity: 5, unit_price: 0.01 },
 ]
+let errorEmpty = { message: "There ar not products " }
 
 export default function App() {
 
@@ -36,10 +37,16 @@ export default function App() {
       setIsFetching(true);
       axios.get(URL).then(response => {
         setIsFetching(false);
-        setProducts(response.data.products);
-        setError(null);
+        if (response.data.products.length === 0) {
+          setError(errorEmpty);
+          setProducts([]);
+        } else {
+          setProducts(response.data.products);
+          setError(null);
+        }
 
-      }).catch( err => {
+
+      }).catch(err => {
         setIsFetching(false);
         setError(err);
         console.log('uh uh', err)
@@ -58,13 +65,13 @@ export default function App() {
         <main>
           {/* YOUR CODE HERE! */}
           <Navbar />
-          {error && <Error error={error}/>}
+          {error && <Error error={error} />}
           <Routes>
-            <Route path="/" element={<Home products={products}/>} />
+            <Route path="/" element={<Home products={products} />} />
             <Route path="products/:productId" element={<ProductDetail />} />
-            <Route path="*" element={<NotFound/>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-          <Sidebar shoppingCart={shoppingCart} isOpen={isOpen}/>
+          <Sidebar shoppingCart={shoppingCart} isOpen={isOpen} />
         </main>
       </BrowserRouter>
     </div>
