@@ -1,7 +1,7 @@
 import * as React from "react"
 import "./Sidebar.css"
 
-export default function Sidebar({cart}) {
+export default function Sidebar({shoppingCart}) {
 
   return (
     <section className="sidebar">
@@ -9,8 +9,8 @@ export default function Sidebar({cart}) {
       <div>
       <p>item.name - item.quantity - item.unit_price . item.unit_price*item.quantity</p>
       </div>
-      {cart.map(item => {
-        console.log('iteeeem', item)
+      {shoppingCart.map(item => {
+        //console.log('iteeeem', item)
         return (
           <div className="added-item" key={item.name}>
             <p>{item.name} - {item.quantity} - {item.unit_price}. {item.unit_price*item.quantity}</p>

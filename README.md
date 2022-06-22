@@ -46,9 +46,9 @@ The following specifications were met on the Express backend and the React front
   - [x] Renders the `Navbar` component on every route
   - [x] Renders the `Sidebar` component on every route
   - [ ] Should create **at least** the following state variables:
-    - [ ] `products` - an array of product objects that is initially empty.
-    - [ ] `isFetching` - a boolean value representing whether or not the App is currently fetching the `products` from the API.
-    - [ ] `error` - a variable used to display a message when something goes wrong with the API requests.
+    - [x] `products` - an array of product objects that is initially empty.
+    - [x] `isFetching` - a boolean value representing whether or not the App is currently fetching the `products` from the API.
+    - [x] `error` - a variable used to display a message when something goes wrong with the API requests.
     - [ ] `isOpen` - a boolean value representing whether or not the `Sidebar.jsx` is in the open or closed state.
     - [ ] `shoppingCart` - should store state for the active user's shopping cart (items they want to purchase and the quantity of each item).
       - [ ] Use whatever data type works best here, but make sure the format the `shoppingCart` as an array before passing it to other components.

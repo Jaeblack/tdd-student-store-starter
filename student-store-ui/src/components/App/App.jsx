@@ -4,8 +4,7 @@ import { useState , useEffect} from "react"
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
-import About from "../About/About"
-import Contact from "../Contact/Contact"
+import Error from "../Home/Error"
 import ProductDetail from "../Product/ProductDetail"
 import "./App.css"
 
@@ -23,17 +22,29 @@ let exCart = [
 export default function App() {
 
 
-  const [cart, setCart] = useState(exCart);
-  const [products, setProducts] = useState([])
+  const [shoppingCart, setShoppingCart] = useState(exCart);
+  const [products, setProducts] = useState([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       // const response = await fetch(URL)
       // const result = await response.json()
       // setProducts(result.products)
+      setIsFetching(true);
+      axios.get(URL).then(response => {
+        setIsFetching(false);
+        setProducts(response.data.products);
+        setError(null);
 
-      const { data } = await axios(URL)
-      setProducts(data.products)
+      }).catch( err => {
+        setIsFetching(false);
+        setError(err);
+        console.log('uh uh', err)
+      })
+
+
     }
 
     fetchData();
@@ -46,12 +57,13 @@ export default function App() {
         <main>
           {/* YOUR CODE HERE! */}
           <Navbar />
+          {error && <Error error={error}/>}
           <Routes>
             <Route path="/" element={<Home products={products}/>} />
             <Route path="products/:productId" element={<ProductDetail />} />
             <Route path="*" element={<NotFound/>} />
           </Routes>
-          <Sidebar cart={cart}/>
+          <Sidebar shoppingCart={shoppingCart}/>
         </main>
       </BrowserRouter>
     </div>
