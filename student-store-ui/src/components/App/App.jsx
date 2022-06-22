@@ -14,9 +14,9 @@ import NotFound from "../Home/NotFound"
 
 const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
-  {name: 'Rice Krispies', quantity: 2, unit_price: 0.54},
-  {name: 'Cheetos', quantity: 3, unit_price: 1.20},
-  {name: 'Cookies', quantity: 5, unit_price: 0.01},
+  {itemId : 0, name: 'Rice Krispies', quantity: 2, unit_price: 0.54},
+  {itemId : 1, name: 'Cheetos', quantity: 3, unit_price: 1.20},
+  {itemId : 2, name: 'Cookies', quantity: 5, unit_price: 0.01},
 ]
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
