@@ -66,7 +66,7 @@ The following specifications were met on the Express backend and the React front
     - [ ] Define as many as are needed.
     - [ ] At minimum, **create these five handlers**:
       - [ ] The **`handleOnToggle`** function. When called...
-        - [ ] It should toggle the open/closed state of the `Sidebar`.
+        - [x] It should toggle the open/closed state of the `Sidebar`.
       - [ ] The **`handleAddItemToCart`** function. When called...
         - [ ] It should accept a single argument - `productId`
         - [ ] It should add that product to the `shoppingCart` if it doesn't exist, and set its quantity to `1`.

@@ -59,6 +59,29 @@ export default function App() {
   }, [])
 
 
+  function handleOnToggle () {
+    setIsOpen((previous) => (!previous));
+  }
+
+  function handleAddItemToCart() {
+
+  }
+
+  function handleRemoveItemFromCart() {
+
+  }
+
+  function handleOnCheckoutFormChange() {
+
+  }
+
+  function handleOnSubmitCheckoutForm() {
+
+  }
+
+
+
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -71,6 +94,7 @@ export default function App() {
             <Route path="products/:productId" element={<ProductDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <button id="toggle" className="toggle" onClick={handleOnToggle}> toggle </button>
           <Sidebar shoppingCart={shoppingCart} isOpen={isOpen} />
         </main>
       </BrowserRouter>
