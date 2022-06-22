@@ -1,6 +1,5 @@
 import * as React from "react"
 import About from "../About/About"
-import Product from "../Product/Product"
 import Contact from "../Contact/Contact"
 import Footer from "../Footer/Footer"
 import "./Home.css"
@@ -15,10 +14,7 @@ export default function Home({products}) {
     <div className="home">
       <Banner/>
       <Search/>
-      <Routes>
-            <Route path="/" element={<ProductsGrid products={products}/>} />
-            <Route path="product/:productId" element={<Product />} />
-          </Routes>
+      <ProductsGrid products={products}/>
       <About/>
       <Contact/>
       <Footer/>

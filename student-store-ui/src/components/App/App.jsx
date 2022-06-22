@@ -6,11 +6,12 @@ import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
 import About from "../About/About"
 import Contact from "../Contact/Contact"
-import Product from "../Product/Product"
+import ProductDetail from "../Product/ProductDetail"
 import "./App.css"
 
 import { BrowserRouter } from "react-router-dom";
 import axios from 'axios';
+import NotFound from "../Home/NotFound"
 
 const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
@@ -46,7 +47,9 @@ export default function App() {
           {/* YOUR CODE HERE! */}
           <Navbar />
           <Routes>
-            <Route path="*" element={<Home products={products}/>} />
+            <Route path="/" element={<Home products={products}/>} />
+            <Route path="products/:productId" element={<ProductDetail />} />
+            <Route path="*" element={<NotFound/>} />
           </Routes>
           <Sidebar cart={cart}/>
         </main>
