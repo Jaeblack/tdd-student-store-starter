@@ -65,13 +65,13 @@ The following specifications were met on the Express backend and the React front
   - [ ] The `App.jsx` component should define handler functions to be passed as props to the `Home` and `ProductDetail` components.
     - [ ] Define as many as are needed.
     - [ ] At minimum, **create these five handlers**:
-      - [ ] The **`handleOnToggle`** function. When called...
+      - [x] The **`handleOnToggle`** function. When called...
         - [x] It should toggle the open/closed state of the `Sidebar`.
-      - [ ] The **`handleAddItemToCart`** function. When called...
-        - [ ] It should accept a single argument - `productId`
-        - [ ] It should add that product to the `shoppingCart` if it doesn't exist, and set its quantity to `1`.
-        - [ ] If it does exist, it should increase the quantity by `1`.
-        - [ ] It should add the price of the product to the total price of the `shoppingCart`.
+      - [x] The **`handleAddItemToCart`** function. When called...
+        - [x] It should accept a single argument - `productId`
+        - [x] It should add that product to the `shoppingCart` if it doesn't exist, and set its quantity to `1`.
+        - [x] If it does exist, it should increase the quantity by `1`.
+        - [x] It should add the price of the product to the total price of the `shoppingCart`.
       - [ ] The **`handleRemoveItemFromCart`** function. When called...
         - [ ] It should accept a single argument - `productId`
         - [ ] It should decrease the quantity of the item in the `shoppingCart` by `1`, but only if it already exists.

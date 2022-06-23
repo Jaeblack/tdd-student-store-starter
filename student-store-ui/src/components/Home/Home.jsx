@@ -9,12 +9,12 @@ import ProductsGrid from "../Product/ProductsGrid"
 import { Routes, Route, Link, useParams } from 'react-router-dom'
 import Sidebar from "../Sidebar/Sidebar"
 
-export default function Home({products}) {
+export default function Home({products, handleAddItemToCart}) {
   return (
     <div className="home">
       <Banner/>
       <Search/>
-      <ProductsGrid products={products}/>
+      <ProductsGrid products={products} handleAddItemToCart={handleAddItemToCart}/>
       <About/>
       <Contact/>
       <Footer/>
