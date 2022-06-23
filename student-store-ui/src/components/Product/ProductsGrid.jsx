@@ -2,7 +2,7 @@ import "./Product.css";
 import ProductCard from "./ProductCard";
 
 
-export default function ProductsGrid({ products, handleAddItemToCart }) {
+export default function ProductsGrid({ products, handleAddItemToCart, handleRemoveItemFromCart }) {
     //console.log("prrrosss", products)
     return (
         <><h1>ProductsGrid</h1>
@@ -10,7 +10,7 @@ export default function ProductsGrid({ products, handleAddItemToCart }) {
 
                 {products &&
                     products.map(product => {
-                        return <ProductCard product={product} key={product.id} handleAddItemToCart={handleAddItemToCart}/>
+                        return <ProductCard product={product} key={product.id} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>
                     })
                 }
             </div >

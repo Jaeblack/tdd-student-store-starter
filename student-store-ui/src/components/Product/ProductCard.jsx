@@ -1,7 +1,7 @@
 import { Routes, Route, Link, useParams } from 'react-router-dom'
 
 
-export default function ProductCard({ product, handleAddItemToCart}) {
+export default function ProductCard({ product, handleAddItemToCart, handleRemoveItemFromCart}) {
     //console.log("prooo", product)
     return (
         < div id="product-card" className="product-card">
@@ -15,7 +15,7 @@ export default function ProductCard({ product, handleAddItemToCart}) {
             </div>
             <div className="product-right">
                 <button className="btn-add" onClick={()=>handleAddItemToCart(product.id)}>+</button>
-                <button className="btn-sus">-</button>
+                <button className="btn-sus" onClick={()=>handleRemoveItemFromCart(product.id)} >-</button>
             </div>
 
         </div >

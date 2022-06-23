@@ -79,8 +79,21 @@ export default function App() {
     setShoppingCart(newShopCart);
   }
 
-  function handleRemoveItemFromCart() {
+  function handleRemoveItemFromCart(productId) {
+    let newShopCart = [...shoppingCart];
+    let prodIndx = newShopCart.findIndex(prod => {
+      return prod.id === productId;
+    });
 
+    if (prodIndx != -1) {
+
+      if(newShopCart[prodIndx].quantity === 0){
+        newShopCart = newShopCart.filter(prod => prod.quantity !=0);
+      } else {
+        newShopCart[prodIndx].quantity -= 1;
+      }
+    }
+    setShoppingCart(newShopCart);
   }
 
   function handleOnCheckoutFormChange() {
@@ -106,8 +119,8 @@ export default function App() {
               <div className="main">
                 {error && <Error error={error} />}
                 <Routes>
-                  <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart}/>} />
-                  <Route path="products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart}/>} />
+                  <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
+                  <Route path="products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>

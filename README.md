@@ -72,11 +72,11 @@ The following specifications were met on the Express backend and the React front
         - [x] It should add that product to the `shoppingCart` if it doesn't exist, and set its quantity to `1`.
         - [x] If it does exist, it should increase the quantity by `1`.
         - [x] It should add the price of the product to the total price of the `shoppingCart`.
-      - [ ] The **`handleRemoveItemFromCart`** function. When called...
-        - [ ] It should accept a single argument - `productId`
-        - [ ] It should decrease the quantity of the item in the `shoppingCart` by `1`, but only if it already exists.
-        - [ ] If it doesn't exist, the function should do nothing.
-        - [ ] If the new quantity is `0`, it should remove the item from the `shoppingCart`
+      - [x] The **`handleRemoveItemFromCart`** function. When called...
+        - [x] It should accept a single argument - `productId`
+        - [x] It should decrease the quantity of the item in the `shoppingCart` by `1`, but only if it already exists.
+        - [x] If it doesn't exist, the function should do nothing.
+        - [x] If the new quantity is `0`, it should remove the item from the `shoppingCart`
       - [ ] The **`handleOnCheckoutFormChange`** function. When called...
         - [ ] It should receive two arguments:
           - [ ] `name` - the `name` attribute of the input being updated
