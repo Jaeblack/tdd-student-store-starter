@@ -2,12 +2,12 @@
     display: flex;
     background-color: seagreen;
 }
-.hero-text{
+.intro{
     flex: 2;
 }
 .hero-img{
     flex: 1;
 }
-.hero-img img {
+.hero-img{
     width: 100%;
 }
