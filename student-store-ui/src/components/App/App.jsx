@@ -16,8 +16,7 @@ const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
   { id: 3, quantity: 3 },
   { id: 1, quantity: 1 },
-  { id: 2, quantity: 2 },
-  { id: 4, quantity: 0 },
+  { id: 2, quantity: 2 }
 ]
 let errorEmpty = { message: "There ar not products " }
 
@@ -29,6 +28,7 @@ export default function App() {
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
+  const [checkoutForm, setCheckoutForm] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -96,12 +96,32 @@ export default function App() {
     setShoppingCart(newShopCart);
   }
 
-  function handleOnCheckoutFormChange() {
-
+  function handleOnCheckoutFormChange(name, value) {
+    console.log(name,value);
+    let newCheck = {...checkoutForm};
+    newCheck[name] = value;
+    setCheckoutForm(newCheck);
+    console.log(checkoutForm);
   }
 
-  function handleOnSubmitCheckoutForm() {
-
+  function handleOnSubmitCheckoutForm(event) {
+    event.preventDefault();
+    let params = {
+      user : {...checkoutForm},
+      shoppingCart : shoppingCart.map((prod) => {
+        return {
+          itemId : prod.id,
+          quantity : prod.quantity
+        }
+      })
+    }
+    console.log('about to send', params);
+    axios.post(URL, params).then(response => {
+      console.log('post got', response);
+    }).catch( err => {
+      setError(err);
+        console.log('uh uh', err)
+    })
   }
 
 
@@ -111,7 +131,7 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
         <div className="container">
-          <Sidebar products={products} shoppingCart={shoppingCart} isOpen={isOpen} handleOnToggle={handleOnToggle} />
+          <Sidebar products={products} shoppingCart={shoppingCart} isOpen={isOpen} handleOnToggle={handleOnToggle} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} />
           <main className="wrapper">
             <div >
               {/* YOUR CODE HERE! */}

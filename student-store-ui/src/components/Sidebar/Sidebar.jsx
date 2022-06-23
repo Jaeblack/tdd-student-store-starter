@@ -3,7 +3,7 @@ import { useState, useEffect} from "react"
 import CheckoutForm from "./CheckoutForm"
 import "./Sidebar.css"
 
-export default function Sidebar({ products, shoppingCart, isOpen, handleOnToggle }) {
+export default function Sidebar({ products, shoppingCart, isOpen, handleOnToggle, handleOnCheckoutFormChange , handleOnSubmitCheckoutForm}) {
 
   const [shoppingItems, setShoppingItems] = useState([]);
 
@@ -50,11 +50,11 @@ export default function Sidebar({ products, shoppingCart, isOpen, handleOnToggle
         {
           <div className="totals">
             <p>Subtotal : </p> <p className='number'>{shoppingItems.reduce((prev, curr) => prev + (curr.price * curr.quantity), 0).toFixed(2)}</p>
-            <p>Taxes : </p> <p className='number' >{(0.16 * shoppingItems.reduce((prev, curr) => prev + (curr.price * curr.quantity), 0)).toFixed(2)}</p>
-            <p>Total : </p> <p className='number' >{(1.16 * shoppingItems.reduce((prev, curr) => prev + (curr.price * curr.quantity), 0)).toFixed(2)}</p>
+            <p>Taxes : </p> <p className='number' >{(0.0875* shoppingItems.reduce((prev, curr) => prev + (curr.price * curr.quantity), 0)).toFixed(2)}</p>
+            <p>Total : </p> <p className='number' >{(1.0875 * shoppingItems.reduce((prev, curr) => prev + (curr.price * curr.quantity), 0)).toFixed(2)}</p>
           </div>
         }
-        <CheckoutForm />
+        <CheckoutForm handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} />
       </section>
     </div>
   )
