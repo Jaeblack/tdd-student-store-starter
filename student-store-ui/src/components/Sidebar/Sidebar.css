@@ -4,14 +4,21 @@
 .totals{
     display: grid;
     justify-content: left;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 6fr 1fr;
 }
 
-.values{
-    justify-self: right;
+.titles{
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
 }
-
+.center{
+    text-align: center;
+}
+.number{
+    text-align: right;
+    padding-right: 15px;
+}
 .added-item{
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr 1fr 1fr ;
+    grid-template-columns: 3fr 1fr 1fr 1fr ;
 }

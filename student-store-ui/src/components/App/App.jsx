@@ -14,9 +14,10 @@ import NotFound from "../Home/NotFound"
 
 const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
-  { itemId: 0, name: 'Rice Krispies', quantity: 2, unit_price: 0.54 },
-  { itemId: 1, name: 'Cheetos', quantity: 3, unit_price: 1.20 },
-  { itemId: 2, name: 'Cookies', quantity: 5, unit_price: 0.01 },
+  { id: 3, quantity: 3 },
+  { id: 1, quantity: 1 },
+  { id: 2, quantity: 2 },
+  { id: 4, quantity: 0 },
 ]
 let errorEmpty = { message: "There ar not products " }
 
@@ -59,12 +60,23 @@ export default function App() {
   }, [])
 
 
-  function handleOnToggle () {
+  function handleOnToggle() {
     setIsOpen((previous) => (!previous));
   }
 
-  function handleAddItemToCart() {
+  function handleAddItemToCart(productId) {
+    let newShopCart = [...shoppingCart];
+    let prodIndx = newShopCart.findIndex(prod => {
+      return prod.id === productId;
+    });
 
+    if (prodIndx === -1) {
+      let newItem = {id: productId, quantity: 1};
+      newShopCart.push(newItem);
+    } else {
+      newShopCart[prodIndx].quantity += 1;
+    }
+    setShoppingCart(newShopCart);
   }
 
   function handleRemoveItemFromCart() {
@@ -85,19 +97,26 @@ export default function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <main>
-          {/* YOUR CODE HERE! */}
-          <Navbar />
-          {error && <Error error={error} />}
-          <Routes>
-            <Route path="/" element={<Home products={products} />} />
-            <Route path="products/:productId" element={<ProductDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <button id="toggle" className="toggle" onClick={handleOnToggle}> toggle </button>
-          <Sidebar shoppingCart={shoppingCart} isOpen={isOpen} />
-        </main>
+        <div className="container">
+          <Sidebar products={products} shoppingCart={shoppingCart} isOpen={isOpen} handleOnToggle={handleOnToggle} />
+          <main className="wrapper">
+            <div >
+              {/* YOUR CODE HERE! */}
+              <Navbar />
+              <div className="main">
+                {error && <Error error={error} />}
+                <Routes>
+                  <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart}/>} />
+                  <Route path="products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart}/>} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </div>
+            </div>
+
+
+          </main>
+        </div>
       </BrowserRouter>
-    </div>
+    </div >
   )
 }
