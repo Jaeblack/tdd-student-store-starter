@@ -30,6 +30,7 @@ export default function App() {
   const [success, setSuccess] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [checkoutForm, setCheckoutForm] = useState({email:'', name:''});
+  const [category, setCategory] = useState({category:'*', word:''});
 
 
   useEffect(() => {
@@ -141,8 +142,8 @@ export default function App() {
                 {error && <Error error={error} />}
 
                 <Routes>
-                  <Route path="/" element={<Home products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
-                  <Route path="products/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
+                  <Route path="/" element={<Home products={products} shoppingCart={shoppingCart} category={category} setCategory={setCategory} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
+                  <Route path="products/:productId" element={<ProductDetail shoppingCart={shoppingCart} category={category} setCategory={setCategory}  handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>

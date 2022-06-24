@@ -9,12 +9,12 @@ import { Routes, Route, Link, useParams } from 'react-router-dom'
 import Sidebar from "../Sidebar/Sidebar"
 import Hero from "../Hero/Hero"
 
-export default function Home({products, shoppingCart, handleAddItemToCart, handleRemoveItemFromCart}) {
+export default function Home({products, shoppingCart, category, setCategory, handleAddItemToCart, handleRemoveItemFromCart}) {
   return (
     <div className="home">
       <Hero/>
-      <Search/>
-      <ProductsGrid products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>
+      <Search category={category} setCategory={setCategory}/>
+      <ProductsGrid products={products} shoppingCart={shoppingCart} category={category} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>
       <About/>
       <Contact/>
       <Footer/>

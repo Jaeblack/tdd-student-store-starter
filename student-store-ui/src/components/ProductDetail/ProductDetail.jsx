@@ -12,7 +12,7 @@ import NotFound from '../NotFound/NotFound';
 
 const URL = 'https://codepath-store-api.herokuapp.com/store'
 
-export default function Product({ shoppingCart, handleAddItemToCart, handleRemoveItemFromCart }) {
+export default function Product({ shoppingCart, category, setCategory, handleAddItemToCart, handleRemoveItemFromCart }) {
     const params = useParams()
 
     const [product, setProduct] = useState({});
@@ -42,7 +42,7 @@ export default function Product({ shoppingCart, handleAddItemToCart, handleRemov
     return (
         < div className="product-detail">
             <Hero />
-            <Search />
+            <Search category={category} setCategory={setCategory}/>
             {
                 isFound === 0 ?
                     <h1 className="loading">Loading...</h1> // 0 - loading

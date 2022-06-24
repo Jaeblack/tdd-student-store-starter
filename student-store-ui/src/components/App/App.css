@@ -1,5 +1,5 @@
 div {
-  outline: 1px solid red;
+  outline: 1px solid gray;
 }
 
 html, body, #root, .container {
@@ -20,8 +20,4 @@ html, body, #root, .container {
 .main {
   flex: 1;
   overflow: auto;
-}
-
-.success{
-  color: green;
 }
