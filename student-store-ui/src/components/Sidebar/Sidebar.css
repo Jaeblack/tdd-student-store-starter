@@ -1,25 +1,14 @@
 .closed{
     display: none;
 }
-.totals{
-    display: grid;
-    justify-content: left;
-    grid-template-columns: 6fr 1fr;
-}
 
-.titles{
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr;
+.sidebar{
+    max-width: 150px;
+    min-width: 0;
+    transition: max-width 0.2s ease,min-width 0.2s ease;
 }
-.center{
-    text-align: center;
-}
-.number{
-    text-align: right;
-    padding-right: 15px;
-}
-
-.added-item{
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr ;
+.sidebar.open{
+    min-width: 350px;
+    max-width: 500px;
+    transition: max-width 0.2s ease,min-width 0.2s ease;
 }

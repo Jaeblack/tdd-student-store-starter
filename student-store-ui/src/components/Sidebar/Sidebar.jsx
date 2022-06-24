@@ -9,8 +9,8 @@ export default function Sidebar({ products, shoppingCart, isOpen, checkoutForm, 
 
 
   return (
-    <section className="sidebar" >
-      <button id="toggle" className="toggle" onClick={handleOnToggle}> toggle </button>
+    <section className={isOpen? "sidebar open" : "sidebar"} >
+      <button id="toggle" className="toggle-button" onClick={handleOnToggle}> toggle </button>
       <ShoppingCart products={products} shoppingCart={shoppingCart} isOpen={isOpen} />
       <CheckoutForm isOpen={isOpen} shoppingCart={shoppingCart} checkoutForm={checkoutForm} success={success} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} />
     </section>
