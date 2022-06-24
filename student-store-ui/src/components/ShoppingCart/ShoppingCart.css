@@ -15,11 +15,8 @@
     text-align: right;
     padding-right: 15px;
 }
+
 .added-item{
     display: grid;
     grid-template-columns: 3fr 1fr 1fr 1fr ;
 }
-
-.success{
-    color: green;
-  }

@@ -10,7 +10,7 @@ export default function ProductsGrid({ products, shoppingCart, handleAddItemToCa
 
                 {products &&
                     products.map(product => {
-                        let prodIndx= (shoppingCart.findIndex(prod => prod.id === product.id));
+                        let prodIndx= (shoppingCart.findIndex(prod => prod.itemId === product.id));
                         let quantity = prodIndx === -1 ? 0 : shoppingCart[prodIndx].quantity;
                         return <ProductCard key={product.id} product={product} productId={product.id} quantity={quantity} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>
                     })

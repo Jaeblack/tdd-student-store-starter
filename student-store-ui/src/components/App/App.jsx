@@ -14,11 +14,11 @@ import NotFound from "../NotFound/NotFound"
 
 const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
-  { id: 3, quantity: 3 },
-  { id: 1, quantity: 1 },
-  { id: 2, quantity: 2 }
+  { itemId: 3, quantity: 1 },
+  { itemId: 1, quantity: 1 },
+  { itemId: 2, quantity: 1 }
 ]
-let errorEmpty = { message: "There ar not products " }
+let errorEmpty = { message: "There are not products " }
 
 export default function App() {
 
@@ -27,8 +27,10 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
-  const [checkoutForm, setCheckoutForm] = useState({});
+  const [checkoutForm, setCheckoutForm] = useState({email:'', name:''});
+
 
   useEffect(() => {
     async function fetchData() {
@@ -67,11 +69,11 @@ export default function App() {
   function handleAddItemToCart(productId) {
     let newShopCart = [...shoppingCart];
     let prodIndx = newShopCart.findIndex(prod => {
-      return prod.id === productId;
+      return prod.itemId === productId;
     });
 
     if (prodIndx === -1) {
-      let newItem = {id: productId, quantity: 1};
+      let newItem = {itemId: productId, quantity: 1};
       newShopCart.push(newItem);
     } else {
       newShopCart[prodIndx].quantity += 1;
@@ -82,7 +84,7 @@ export default function App() {
   function handleRemoveItemFromCart(productId) {
     let newShopCart = [...shoppingCart];
     let prodIndx = newShopCart.findIndex(prod => {
-      return prod.id === productId;
+      return prod.itemId === productId;
     });
 
     if (prodIndx != -1) {
@@ -108,18 +110,17 @@ export default function App() {
     event.preventDefault();
     let params = {
       user : {...checkoutForm},
-      shoppingCart : shoppingCart.map((prod) => {
-        return {
-          itemId : prod.id,
-          quantity : prod.quantity
-        }
-      })
+      shoppingCart : [...shoppingCart]
     }
     console.log('about to send', params);
     axios.post(URL, params).then(response => {
       console.log('post got', response);
+      setSuccess(true);
+      setShoppingCart([]);
+      setCheckoutForm({email:'', name:''});
     }).catch( err => {
       setError(err);
+      setSuccess(false);
         console.log('uh uh', err)
     })
   }
@@ -131,13 +132,14 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
         <div className="container">
-          <Sidebar products={products} shoppingCart={shoppingCart} isOpen={isOpen} handleOnToggle={handleOnToggle} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} />
+          <Sidebar products={products} shoppingCart={shoppingCart} isOpen={isOpen} checkoutForm={checkoutForm} success={success} handleOnToggle={handleOnToggle} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} />
           <main className="wrapper">
             <div >
               {/* YOUR CODE HERE! */}
               <Navbar />
               <div className="main">
                 {error && <Error error={error} />}
+
                 <Routes>
                   <Route path="/" element={<Home products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
                   <Route path="products/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
