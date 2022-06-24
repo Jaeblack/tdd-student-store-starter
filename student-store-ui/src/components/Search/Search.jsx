@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "./Search.css"
 
 export default function Search({ category, setCategory }) {
@@ -26,11 +27,16 @@ export function SearchInput({ category, setCategory }) {
 }
 
 export function SearchCategories({ category, setCategory }) {
+
+    const [isOpen, setIsOpen] = useState(true);
+
     console.log(category);
     return (
-        < div id="categories">
-            <button className="toggle-categorires">toggle</button>
-            <ul>
+        < div >
+            <button className="toggle-categorires" onClick={() => {
+                setIsOpen( prev => !prev)
+            }}>toggle</button>
+            <ul className={ isOpen? 'categories' : 'categories closed' } >
                 <li className={category.category === '*' ? 'is-active': ''}><button onClick={e => {
                     setCategory(prev => {
                         return { ...prev, category: '*' }
