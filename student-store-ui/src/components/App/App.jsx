@@ -4,13 +4,13 @@ import { useState, useEffect } from "react"
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
-import Error from "../Home/Error"
-import ProductDetail from "../Product/ProductDetail"
+import Error from "../Error/Error"
+import ProductDetail from "../ProductDetail/ProductDetail"
 import "./App.css"
 
 import { BrowserRouter } from "react-router-dom";
 import axios from 'axios';
-import NotFound from "../Home/NotFound"
+import NotFound from "../NotFound/NotFound"
 
 const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
@@ -139,8 +139,8 @@ export default function App() {
               <div className="main">
                 {error && <Error error={error} />}
                 <Routes>
-                  <Route path="/" element={<Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
-                  <Route path="products/:productId" element={<ProductDetail handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
+                  <Route path="/" element={<Home products={products} shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
+                  <Route path="products/:productId" element={<ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemFromCart={handleRemoveItemFromCart}/>} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>

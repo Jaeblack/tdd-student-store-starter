@@ -1,7 +1,7 @@
 import * as React from "react"
 import "./Navbar.css"
 import { Routes, Route, Link, useParams } from 'react-router-dom'
-import Logo from "./Logo"
+import Logo from "../Logo/Logo"
 
 export default function Navbar() {
   return (
