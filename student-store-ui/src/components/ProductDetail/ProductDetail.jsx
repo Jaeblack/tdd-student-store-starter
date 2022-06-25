@@ -15,7 +15,7 @@ const URL = 'https://codepath-store-api.herokuapp.com/store'
 export default function Product({ shoppingCart, category, setCategory, handleAddItemToCart, handleRemoveItemFromCart }) {
     const params = useParams()
 
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState({id:1});
     const [isFound, setIsFound] = useState(0); // 0-loading, 1-found, 2- not found
     const [productId, setProductId] = useState(0);
     const [quantity, setQuantity] = useState(0);
@@ -23,7 +23,7 @@ export default function Product({ shoppingCart, category, setCategory, handleAdd
     useEffect(() => {
         axios.get((URL + `/${params.productId}`))
             .then((response) => {
-                console.log('respons', response);
+                //console.log('respons', response);
                 let respProd = response.data.product
                 setProduct(respProd);
                 setIsFound(1);
@@ -38,11 +38,17 @@ export default function Product({ shoppingCart, category, setCategory, handleAdd
             });
     }, []);
 
+    useEffect(() => {
+        let prodIndx = (shoppingCart.findIndex(prod => prod.itemId === productId));
+        let quant = prodIndx === -1 ? 0 : shoppingCart[prodIndx].quantity;
+        setQuantity(quant);
+    }, [shoppingCart]);
+
 
     return (
         < div className="product-detail">
             <Hero />
-            <Search category={category} setCategory={setCategory}/>
+            <Search category={category} setCategory={setCategory} />
             {
                 isFound === 0 ?
                     <h1 className="loading">Loading...</h1> // 0 - loading

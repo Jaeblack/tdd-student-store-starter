@@ -31,6 +31,7 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(true);
   const [checkoutForm, setCheckoutForm] = useState({email:'', name:''});
   const [category, setCategory] = useState({category:'*', word:''});
+  const [receipt, setReceipt] = useState(null);
 
 
   useEffect(() => {
@@ -80,6 +81,7 @@ export default function App() {
       newShopCart[prodIndx].quantity += 1;
     }
     setShoppingCart(newShopCart);
+    // setShoppingCart(prev => [...prev, {itemId: productId, quantity: 1}]);
   }
 
   function handleRemoveItemFromCart(productId) {
@@ -91,7 +93,7 @@ export default function App() {
     if (prodIndx != -1) {
 
       if(newShopCart[prodIndx].quantity === 0){
-        newShopCart = newShopCart.filter(prod => prod.quantity !=0);
+        newShopCart = newShopCart.filter(prod => prod.quantity != 0);
       } else {
         newShopCart[prodIndx].quantity -= 1;
       }
@@ -116,9 +118,11 @@ export default function App() {
     console.log('about to send', params);
     axios.post(URL, params).then(response => {
       console.log('post got', response);
+
       setSuccess(true);
       setShoppingCart([]);
       setCheckoutForm({email:'', name:''});
+      setReceipt(response.data.purchase.receipt);
     }).catch( err => {
       setError(err);
       setSuccess(false);
@@ -133,7 +137,7 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
         <div className="container">
-          <Sidebar products={products} shoppingCart={shoppingCart} isOpen={isOpen} checkoutForm={checkoutForm} success={success} handleOnToggle={handleOnToggle} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} />
+          <Sidebar products={products} shoppingCart={shoppingCart} isOpen={isOpen}  checkoutForm={checkoutForm} success={success} receipt={receipt} setReceipt={setReceipt} handleOnToggle={handleOnToggle} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm} />
           <main className="wrapper">
             <div >
               {/* YOUR CODE HERE! */}

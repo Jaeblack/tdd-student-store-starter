@@ -30,7 +30,7 @@ export function SearchCategories({ category, setCategory }) {
 
     const [isOpen, setIsOpen] = useState(true);
 
-    console.log(category);
+    //console.log(category);
     return (
         < div >
             <button className="toggle-categorires" onClick={() => {

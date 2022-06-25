@@ -8,7 +8,7 @@ export default function ProductsGrid({ products, shoppingCart, category, handleA
         <><h1>ProductsGrid</h1>
             < div id="product-grid" className="product-grid">
 
-                {products &&
+                {products != null && /// check truthy values
 
                     products.filter(product => {
                         return (product.category.toLowerCase() === category.category.toLowerCase() || category.category === '*')
