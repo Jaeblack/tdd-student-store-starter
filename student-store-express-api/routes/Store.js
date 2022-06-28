@@ -5,8 +5,8 @@ const Store = require('../models/Store');
 
 
 router.get('/', (req, res) => {
-    const all = Store.getAll();
-    res.status(200).send(all);
+    const products = Store.getAll();
+    res.status(200).send({ products : products});
 })
 
 
