@@ -247,7 +247,7 @@ The following specifications were met on the Express backend and the React front
   - [x] Have a `server.js` file that starts the app by listening on port `3001`.
 
 **Models** - The API should use a `Store` model that handles the following
-  - [ ] List all products currently in the `db.json` file
+  - [x] List all products currently in the `db.json` file
   - [ ] Fetch a single product by its id
   - [ ] Create a purchase order
 

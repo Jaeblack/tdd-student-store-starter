@@ -3,11 +3,17 @@ const express = require('express')
 const morgan = require('morgan');
 const bodyParser = require('body-parser')
 const { NotFoundError} = require('./utils/errors')
+const  {storage} = require('./data/storage');
+const Store = require('./routes/Store');
+
+console.log('I am here')
 
 const app = express()
 
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
+
+app.use('/store', Store);
 
 app.get('/', (req, res)=>{
     res.status(200).send({ "ping": "pongg" })
@@ -15,7 +21,6 @@ app.get('/', (req, res)=>{
 
 
 app.use((req, res, next)=>{
-    console.log('Nooooo')
     next((new NotFoundError()));
 });
 
