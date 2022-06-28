@@ -14,6 +14,11 @@ router.get('/:productId', (req, res) => {
     res.status(200).send({ product : product});
 })
 
+router.post('/', (req, res) => {
+    const purchase = Store.makeOrder(req.body);
+    res.status(201).send({ purchase : purchase});
+})
+
 
 
 

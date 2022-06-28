@@ -2,6 +2,7 @@
 const {BadRequestError, NotFoundError} = require('../utils/errors')
 
 const  {storage} = require('../data/storage');
+const { use } = require('../routes/Store');
 
 
 class Store {
@@ -22,6 +23,18 @@ class Store {
         } else {
             return product;
         }
+    }
+
+    static makeOrder(checkout){
+        if( checkout === undefined || checkout.user === undefined || checkout.shoppingCart === undefined){
+            throw new BadRequestError()
+        }
+        const user = checkout.user;
+        const shoppingCart = checkout.shoppingCart;
+        if( !user.name || !user.email) throw new BadRequestError();
+        if(shoppingCart.length === 0) throw new BadRequestError();
+
+        return {cost : 100}
     }
 
 }
