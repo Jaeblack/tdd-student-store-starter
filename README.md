@@ -61,8 +61,8 @@ The following specifications were met on the Express backend and the React front
     - [x] When the request completes successfully, it should store the `products` returned by the response in state.
     - [x] If the request does not complete successfully, or there are no `products` found in the response,
             it should create an error message and store it in the `error` state variable.
-  - [ ] The `App.jsx` component should define handler functions to be passed as props to the `Home` and `ProductDetail` components.
-    - [ ] Define as many as are needed.
+  - [x] The `App.jsx` component should define handler functions to be passed as props to the `Home` and `ProductDetail` components.
+    - [x] Define as many as are needed.
     - [x] At minimum, **create these five handlers**:
       - [x] The **`handleOnToggle`** function. When called...
         - [x] It should toggle the open/closed state of the `Sidebar`.
@@ -138,7 +138,7 @@ The following specifications were met on the Express backend and the React front
     - `handleRemoveItemToCart` - handler function defined in the `App.jsx` component
   - [x] Should define **at least** a `product` state variable and updater
   - [x] It should leverage the `useParams` hook from `react-router-dom` to extract the `productId` param from the url.
-  - [ ] When the component is mounted to the screen...
+  - [x] When the component is mounted to the screen...
     - [x] It should make a `GET` request to the `/store/:productId` endpoint with the `axios.get` method.
     - [x] The `:productId` part of the request should be replaced with the `productId` pulled from the url.
     - [x] When the initial request is loading, it should render an `h1` element with the `className` of `loading` and contain the text `"Loading..."`
@@ -170,7 +170,7 @@ The following specifications were met on the Express backend and the React front
   - [x] Should render the `name` of the product inside an element with the `className` of `product-name`
   - [x] Should render the `price` of the product inside an element with the `className` of `product-price`. The price should formatted so that it starts with a `$`, and has **at least one** integer digit, along with **exactly two** decimal digits. Examples - `$22.99`, `$860.20`, and `$0.50`
   - [x] If the `showDescription` prop is set to `true`, it should render the `description` of the product inside an element with the `className` of `product-description`.
-  - [ ] Should render an `img` element for the product:
+  - [x] Should render an `img` element for the product:
     - [x] The `img` element should have a `src` attribute to set to the `image` property of the `product` prop.
     - [x] The `img` element should be wrapped in a `Link` component from `react-router-dom`.
       - [x] The `Link` element should have a `to` prop so that when the `img` element is clicked on, it should navigate to the product detail route for that product using its `id` attribute. For example, a product with an `id` of `4` should create a `Link` with its `to` prop set to `/products/4`.
