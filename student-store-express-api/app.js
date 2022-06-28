@@ -6,7 +6,6 @@ const { NotFoundError} = require('./utils/errors')
 const  {storage} = require('./data/storage');
 const Store = require('./routes/Store');
 
-console.log('I am here')
 
 const app = express()
 

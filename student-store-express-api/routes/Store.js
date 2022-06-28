@@ -9,6 +9,11 @@ router.get('/', (req, res) => {
     res.status(200).send({ products : products});
 })
 
+router.get('/:productId', (req, res) => {
+    const product = Store.getProduct(req.params.productId);
+    res.status(200).send({ product : product});
+})
+
 
 
 
