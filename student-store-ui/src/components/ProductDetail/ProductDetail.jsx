@@ -10,7 +10,8 @@ import axios from 'axios';
 import "./ProductDetail.css"
 import NotFound from '../NotFound/NotFound';
 
-const URL = 'https://codepath-store-api.herokuapp.com/store'
+const URL = 'http://localhost:3001/store'
+//const URL = 'https://codepath-store-api.herokuapp.com/store'
 
 export default function Product({ shoppingCart, category, setCategory, handleAddItemToCart, handleRemoveItemFromCart }) {
     const params = useParams()

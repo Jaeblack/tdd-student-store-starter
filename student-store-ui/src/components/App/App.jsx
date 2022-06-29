@@ -12,7 +12,8 @@ import { BrowserRouter } from "react-router-dom";
 import axios from 'axios';
 import NotFound from "../NotFound/NotFound"
 
-const URL = 'https://codepath-store-api.herokuapp.com/store'
+const URL = 'http://localhost:3001/store'
+//const URL = 'https://codepath-store-api.herokuapp.com/store'
 let exCart = [
   { itemId: 3, quantity: 1 },
   { itemId: 1, quantity: 1 },
@@ -54,7 +55,7 @@ export default function App() {
       }).catch(err => {
         setIsFetching(false);
         setError(err);
-        console.log('uh uh', err)
+        //console.log('uh uh', err)
       })
 
 
@@ -102,11 +103,11 @@ export default function App() {
   }
 
   function handleOnCheckoutFormChange(name, value) {
-    console.log(name,value);
+    //console.log(name,value);
     let newCheck = {...checkoutForm};
     newCheck[name] = value;
     setCheckoutForm(newCheck);
-    console.log(checkoutForm);
+    //console.log(checkoutForm);
   }
 
   function handleOnSubmitCheckoutForm(event) {
@@ -115,9 +116,9 @@ export default function App() {
       user : {...checkoutForm},
       shoppingCart : [...shoppingCart]
     }
-    console.log('about to send', params);
+    //console.log('about to send', params);
     axios.post(URL, params).then(response => {
-      console.log('post got', response);
+      //console.log('post got', response);
 
       setSuccess(true);
       setShoppingCart([]);
@@ -126,7 +127,7 @@ export default function App() {
     }).catch( err => {
       setError(err);
       setSuccess(false);
-        console.log('uh uh', err)
+        //console.log('uh uh', err)
     })
   }
 

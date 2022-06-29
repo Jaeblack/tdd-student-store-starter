@@ -145,5 +145,99 @@
       "price": 999.99
     }
   ],
-  "purchases": []
+  "purchases": [
+    {
+      "id": 1,
+      "name": "eeee",
+      "email": "aaa",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "quantity": 1
+        },
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "5.96",
+      "createdAt": "2022-06-29T18:43:37.524Z",
+      "receipt": {
+        "lines": [
+          "Showing receipt for eeee available at aaa:",
+          "1 total Cinnamon Rolls at a cost of $2.99 for a total cost of $2.99",
+          "1 total Rice Krispies at a cost of $0.99 for a total cost of $0.99",
+          "1 total Flamin Hot Cheetos at a cost of $1.5 for a total cost of $1.5",
+          "Before taxes, the subtotal was $5.48",
+          "After taxes and fees were applied, the total comes out to $5.96"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "name": "aaaa",
+      "email": "aa",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "quantity": 1
+        },
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "5.96",
+      "createdAt": "2022-06-29T18:47:42.568Z",
+      "receipt": {
+        "lines": [
+          "Showing receipt for aaaa available at aa:",
+          "1 total Cinnamon Rolls at a cost of $2.99 for a total cost of $2.99",
+          "1 total Rice Krispies at a cost of $0.99 for a total cost of $0.99",
+          "1 total Flamin Hot Cheetos at a cost of $1.5 for a total cost of $1.5",
+          "Before taxes, the subtotal was $5.48",
+          "After taxes and fees were applied, the total comes out to $5.96"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "name": "aaaa",
+      "email": "aa",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "quantity": 1
+        },
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "5.96",
+      "createdAt": "2022-06-29T18:48:43.511Z",
+      "receipt": {
+        "lines": [
+          "Showing receipt for aaaa available at aa:",
+          "1 total Cinnamon Rolls at a cost of $2.99 for a total cost of $2.99",
+          "1 total Rice Krispies at a cost of $0.99 for a total cost of $0.99",
+          "1 total Flamin Hot Cheetos at a cost of $1.5 for a total cost of $1.5",
+          "Before taxes, the subtotal was $5.48",
+          "After taxes and fees were applied, the total comes out to $5.96"
+        ]
+      }
+    }
+  ]
 }

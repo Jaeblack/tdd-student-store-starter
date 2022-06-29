@@ -2,6 +2,7 @@
 const express = require('express')
 const morgan = require('morgan');
 const bodyParser = require('body-parser')
+const cors = require('cors');
 const { NotFoundError} = require('./utils/errors')
 const  {storage} = require('./data/storage');
 const Store = require('./routes/Store');
@@ -9,6 +10,7 @@ const Store = require('./routes/Store');
 
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 
