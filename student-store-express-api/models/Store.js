@@ -48,6 +48,9 @@ class Store {
             receipt : { lines : []}
         }
 
+        //first line of receipt
+        purchase.receipt.lines.push((`Showing receipt for ${user.name} available at ${user.email}:`));
+
 
 
         //checking items
@@ -66,25 +69,31 @@ class Store {
                     throw new BadRequestError(`item id ${item.itemId} repeated`);
             }
 
-            // calculating the total price
-            let product = products.find(prod => prod.id == item.itemId);
+            // checking a product
+            const product = products.find(prod => prod.id == item.itemId);
             if(!product) throw new BadRequestError(`item with id ${item.itemId} not found`);
 
-            product.price *= item.quantity;
+            //Adiding line to receipt
+            purchase.receipt.lines.push(`${item.quantity} total ${product.name} at a cost of $${product.price} for a total cost of $${(product.price * item.quantity)}`);
 
-            purchase.total += product.price;
+            // Before I had product as a let, and I was doing product.price *= item.quantity
+            // But it was modifying the db.json because product is a reference
+            // not a copy, so be careful next time
+            purchase.total += (product.price * item.quantity);
 
 
         });
 
-        //Adding single lines for the purchase receipt
-        purchase.receipt.lines.push((`You have purchased ${purchase.order.length} different kind of items`));
 
-        purchase.receipt.lines.push(`With an original total price of $ ${purchase.total}`);
-        purchase.receipt.lines.push(`and $${((purchase.total * 0.0875).toFixed(2))} of taxes (8.75%)`);
+
+        //Adding final lines for the purchase receipt
+        purchase.receipt.lines.push((`Before taxes, the subtotal was $${purchase.total}`));
         purchase.total *= 1.0875
         purchase.total = (purchase.total).toFixed(2);
-        purchase.receipt.lines.push(`The total cost is $${(purchase.total)}`);
+        purchase.receipt.lines.push(`After taxes and fees were applied, the total comes out to $${purchase.total}`);
+        // storing the new purchase
+        purchase.id = storage.get('purchases').value().length + 1;
+        storage.add('purchases', purchase);
         /*
 */
 
