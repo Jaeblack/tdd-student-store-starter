@@ -77,13 +77,13 @@ class Store {
 
         });
 
-
+        //Adding single lines for the purchase receipt
         purchase.receipt.lines.push((`You have purchased ${purchase.order.length} different kind of items`));
 
         purchase.receipt.lines.push(`With an original total price of $ ${purchase.total}`);
-        purchase.receipt.lines.push(`and $${(purchase.total * 0.0875).toFixed(2)} of taxes (8.75%)`);
+        purchase.receipt.lines.push(`and $${((purchase.total * 0.0875).toFixed(2))} of taxes (8.75%)`);
         purchase.total *= 1.0875
-        purchase.total = purchase.total.toFixed(2)
+        purchase.total = (purchase.total).toFixed(2);
         purchase.receipt.lines.push(`The total cost is $${(purchase.total)}`);
         /*
 */
