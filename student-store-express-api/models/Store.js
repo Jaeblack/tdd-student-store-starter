@@ -35,6 +35,21 @@ class Store {
         if (!user.name || !user.email) throw new BadRequestError("No name or email");
         if (shoppingCart.length === 0) throw new BadRequestError("Shopping cart without items");
 
+
+        const products = this.getAll();
+
+        let purchase = {
+            id : 1,
+            name : user.name,
+            email : user.email,
+            order : shoppingCart,
+            total : 0,
+            createdAt : new Date(),
+            receipt : { lines : []}
+        }
+
+
+
         //checking items
         shoppingCart.map((item, idx) => {
             //check there are no missing fields in the item
@@ -51,11 +66,29 @@ class Store {
                     throw new BadRequestError(`item id ${item.itemId} repeated`);
             }
 
+            // calculating the total price
+            let product = products.find(prod => prod.id == item.itemId);
+            if(!product) throw new BadRequestError(`item with id ${item.itemId} not found`);
+
+            product.price *= item.quantity;
+
+            purchase.total += product.price;
 
 
         });
 
-        return { cost: 100 }
+
+        purchase.receipt.lines.push((`You have purchased ${purchase.order.length} different kind of items`));
+
+        purchase.receipt.lines.push(`With an original total price of $ ${purchase.total}`);
+        purchase.receipt.lines.push(`and $${(purchase.total * 0.0875).toFixed(2)} of taxes (8.75%)`);
+        purchase.total *= 1.0875
+        purchase.total = purchase.total.toFixed(2)
+        purchase.receipt.lines.push(`The total cost is $${(purchase.total)}`);
+        /*
+*/
+
+        return purchase;
     }
 
 }
