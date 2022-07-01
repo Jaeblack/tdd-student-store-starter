@@ -616,6 +616,68 @@
           "After taxes and fees were applied, the total comes out to $21.43"
         ]
       }
+    },
+    {
+      "id": 17,
+      "name": "jose",
+      "email": "joseespinosa@fb.com",
+      "order": [
+        {
+          "itemId": 2,
+          "quantity": 3
+        },
+        {
+          "itemId": 3,
+          "quantity": 4
+        },
+        {
+          "itemId": 5,
+          "quantity": 1
+        }
+      ],
+      "total": "26.06",
+      "createdAt": "2022-06-29T22:39:45.322Z",
+      "receipt": {
+        "lines": [
+          "Showing receipt for jose available at joseespinosa@fb.com:",
+          "3 total Flamin Hot Cheetos at a cost of $1.5 for a total cost of $4.5",
+          "4 total Cinnamon Rolls at a cost of $2.99 for a total cost of $11.96",
+          "1 total Fruit Medley at a cost of $7.5 for a total cost of $7.5",
+          "Before taxes, the subtotal was $23.96",
+          "After taxes and fees were applied, the total comes out to $26.06"
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "name": "a",
+      "email": "a",
+      "order": [
+        {
+          "itemId": 3,
+          "quantity": 1
+        },
+        {
+          "itemId": 1,
+          "quantity": 1
+        },
+        {
+          "itemId": 2,
+          "quantity": 1
+        }
+      ],
+      "total": "5.96",
+      "createdAt": "2022-06-29T23:43:20.035Z",
+      "receipt": {
+        "lines": [
+          "Showing receipt for a available at a:",
+          "1 total Cinnamon Rolls at a cost of $2.99 for a total cost of $2.99",
+          "1 total Rice Krispies at a cost of $0.99 for a total cost of $0.99",
+          "1 total Flamin Hot Cheetos at a cost of $1.5 for a total cost of $1.5",
+          "Before taxes, the subtotal was $5.48",
+          "After taxes and fees were applied, the total comes out to $5.96"
+        ]
+      }
     }
   ]
 }

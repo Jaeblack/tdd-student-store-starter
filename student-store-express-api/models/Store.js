@@ -1,4 +1,4 @@
-
+"use strict";
 const { BadRequestError, NotFoundError } = require('../utils/errors')
 
 const { storage } = require('../data/storage');

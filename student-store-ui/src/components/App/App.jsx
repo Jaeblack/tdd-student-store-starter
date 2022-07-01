@@ -8,7 +8,7 @@ import Error from "../Error/Error"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import "./App.css"
 
-import { BrowserRouter } from "react-router-dom";
+import {  BrowserRouter } from "react-router-dom";
 import axios from 'axios';
 import NotFound from "../NotFound/NotFound"
 
